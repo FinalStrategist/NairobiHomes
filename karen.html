@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Living in Karen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .image-grid img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+        .expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 1000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Luxury Living in <span class="gold-text">Karen</span></h1>
+            <p>Discover premium properties in Karen with stunning interiors and serene exteriors.</p>
+            <div class="search-box">
+                <input type="text" id="locationSearch" placeholder="Search properties in Karen...">
+                <div class="suggestions-box" id="suggestions"></div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="gallery">
+        <h2 class="section-title">Interior Views</h2>
+        <div class="image-grid">
+            <img src="images/interior1.jpg" alt="Interior 1" class="fade-in expandable">
+            <img src="images/interior2.jpg" alt="Interior 2" class="fade-in expandable">
+            <img src="images/interior3.jpg" alt="Interior 3" class="fade-in expandable">
+            <img src="images/interior4.jpg" alt="Interior 4" class="fade-in expandable">
+            <img src="images/interior5.jpg" alt="Interior 5" class="fade-in expandable">
+            <img src="images/interior6.jpg" alt="Interior 6" class="fade-in expandable">
+            <img src="images/interior7.jpg" alt="Interior 7" class="fade-in expandable">
+        </div>
+    </section>
+    
+    <section class="gallery">
+        <h2 class="section-title">Exterior Views</h2>
+        <div class="image-grid">
+            <img src="images/exterior1.jpg" alt="Exterior 1" class="fade-in expandable">
+            <img src="images/exterior2.jpg" alt="Exterior 2" class="fade-in expandable">
+            <img src="images/exterior3.jpg" alt="Exterior 3" class="fade-in expandable">
+        </div>
+    </section>
+    
+    <div id="loader" class="loader hidden">Loading...</div>
+    
+    <footer>
+        <p>&copy; 2025 Luxury Properties. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.expandable').forEach(img => {
+            img.addEventListener('click', () => {
+                if (img.classList.contains('expanded')) {
+                    img.classList.remove('expanded');
+                } else {
+                    document.querySelectorAll('.expanded').forEach(exp => exp.classList.remove('expanded'));
+                    img.classList.add('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
